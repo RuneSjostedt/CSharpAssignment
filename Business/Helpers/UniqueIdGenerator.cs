@@ -1,9 +1,19 @@
-﻿namespace Business.Helpers;
+﻿using System.Diagnostics;
+
+namespace Business.Helpers;
 
 internal static class UniqueIdGenerator
 {
     public static string GenerateUniqueId()
     {
-        return Guid.NewGuid().ToString();
+        try
+        {
+            return Guid.NewGuid().ToString();
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return null!;
+        }
     }
 }

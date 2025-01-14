@@ -1,17 +1,27 @@
 ﻿using Business.Factories;
 using Business.Helpers;
 using Business.Models;
+using System.Diagnostics;
 
 namespace MainApp.Services;
 
 public class UserService
 {
-    public void Create(UserRegistrationForm form)
+    private readonly List<UserEntity> _users = [];
+    public bool Create(UserRegistrationForm form)
     {
-        UserEntity userEntity = UserFactory.Create(form);
-        
-        userEntity.Id = UniqueIdGenerator.GenerateUniqueId();
-        
+        try
+        {
+            UserEntity userEntity = UserFactory.Create(form);
+            userEntity.Id = UniqueIdGenerator.GenerateUniqueId();
 
+            _users.Add(userEntity);
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return false;
+        }
     }
 }
