@@ -1,5 +1,9 @@
 ﻿
 
+using Business.Factories;
+using Business.Models;
+using System.Transactions;
+
 namespace MainApp.Services;
 
 public class UserMenu
@@ -40,4 +44,47 @@ public class UserMenu
             }
         }
     }
+    public void CreateOption()
+    {
+
+        UserRegistrationForm userRegistrationForm = UserFactory.Create();
+       
+        Console.Clear();
+
+        Console.Write("Enter your first name: ");
+        userRegistrationForm.FirstName = Console.ReadLine()!;
+
+        Console.Write("Enter your last name: ");
+        userRegistrationForm.LastName = Console.ReadLine()!;
+
+        Console.Write("Enter your Email: ");
+        userRegistrationForm.Email = Console.ReadLine()!;
+
+        Console.Write("Enter your Phonenumber ");
+        userRegistrationForm.Phonenumber = Console.ReadLine()!;
+
+        Console.Write("Enter your first name: ");
+        userRegistrationForm.Adress = Console.ReadLine()!;
+
+        Console.Write("Enter your first name: ");
+        userRegistrationForm.Postalcode = Console.ReadLine()!;
+
+        Console.Write("Enter your first name: ");
+        userRegistrationForm.County = Console.ReadLine()!;
+
+        Console.ReadKey();
+    }
+
+    public void ViewOption()
+    {
+        Console.Clear();
+
+
+
+        Console.Readkey();
+    }
 }
+
+
+
+
