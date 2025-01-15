@@ -9,9 +9,9 @@ public static class UserFactory
         return new UserRegistrationForm();
     }
 
-    public static UserEntity Create(UserRegistrationForm form)
+    public static User Create(UserRegistrationForm form)
     {
-        return new UserEntity()
+        return new User()
         {
           
             FirstName = form.FirstName,
@@ -21,6 +21,22 @@ public static class UserFactory
             Adress = form.Adress,
             Postalcode = form.Postalcode,
             County = form.County,
+        };
+    }
+
+
+    public static User Create(User entity)
+    {
+        return new User()
+        {
+            Id = entity.Id,
+            FirstName = entity.FirstName,
+            LastName = entity.LastName,
+            Email = entity.Email,
+            Phonenumber = entity.Phonenumber,
+            Adress = entity.Adress,
+            Postalcode = entity.Postalcode,
+            County = entity.County,
         };
     }
 }

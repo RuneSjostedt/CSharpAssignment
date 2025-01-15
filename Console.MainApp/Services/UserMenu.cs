@@ -54,6 +54,8 @@ public class UserMenu
        
         Console.Clear();
 
+        User user = new();
+
         Console.Write("Enter your first name: ");
         userRegistrationForm.FirstName = Console.ReadLine()!;
 
@@ -77,6 +79,7 @@ public class UserMenu
 
         bool result  = _userService.Create(userRegistrationForm);
 
+
         if (result)
             OutputDialog("Contact was succesfully created");
         else
@@ -85,9 +88,27 @@ public class UserMenu
 
     public void ViewOption()
     {
-        Console.Clear();
         
-        Console.Readkey();
+        var users = _userService.GetAll();
+
+        Console.Clear();
+
+        foreach (var user in users)
+        {
+            Console.WriteLine($"{"Id:",-10}{user.Id}");
+            Console.WriteLine($"{"Name:",-10}{user.FirstName}{user.LastName}");
+            Console.WriteLine($"{"Email:",-10}{user.Email}");
+            Console.WriteLine($"{"Phonenumber:",-10}{user.Phonenumber}");
+            Console.WriteLine($"{"Adress:",-10}{user.Adress}");
+            Console.WriteLine($"{"Postal code:",-10}{user.Postalcode}");
+            Console.WriteLine($"{"County:",-10}{user.County}");
+        }
+        
+        Console.ReadKey();
+
+        
+
+
     }
 
     public void InvalidOption()
